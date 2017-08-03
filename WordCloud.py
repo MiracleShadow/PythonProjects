@@ -14,4 +14,3 @@ plt.axis("off")
 plt.show()
 
 wc.to_file('关键字.png')  # 把词云保存下来
-
