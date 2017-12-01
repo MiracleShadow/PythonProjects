@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <!--<h1>{{content}}</h1>-->
+<!--{% for course in courses %}-->
+    <!--{{ course }}-->
+<!--{% endfor %}-->
+    {{ info_dict.name}}
+    {{ info_dict.age}}
+    <!--也可以通过字典遍历出所有的键值对-->
+    {% for key,value in info_dict.items %}
+    <p>{{key}}:{{value}}</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>登录 - 智游教育问答</title>
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/css/all.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-title">
+                        <span onclick="history.go(-1)" class="glyphicon glyphicon-chevron-left pull-left"></span>
+                        登录
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <form action="" method="POST">
+                    <div class="alert alert-danger" role="alert">
+                         <strong>提示：</strong>
+                    </div>
+                <div class="form-group">
+                     <input type="text" name="username" class="form-control" required
+                        pattern="^[0-9a-zA-Z\u4e00-\u9fa5]{2,16}$" value="">
+                     <input type="text" name="username" class="form-control" required
+                        pattern="^[0-9a-zA-Z\u4e00-\u9fa5]{2,16}$" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control"
+                        pattern="^.{3,6}$" required placeholder="请输入密码">
+                </div>
+                <input type="submit" class="btn btn-success form-control" value="登录">
+            </form>
+        </div>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+{#<script src="{% static "scripts/user/signin.js"%}"></script>#}
+    </body>
+</html>
