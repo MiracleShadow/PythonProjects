@@ -4,15 +4,13 @@ from bs4 import BeautifulSoup
 
 def request(url):
     headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}
-    content = requests.get(url, headers=headers)
-    return content
+    return requests.get(url, headers=headers)
 
 #获取html
 def get_html_text(url):
     start_html = request(url)
     start_html.encoding = start_html.apparent_encoding
-    Soup = BeautifulSoup(start_html.text, 'lxml')
-    return Soup
+    return BeautifulSoup(start_html.text, 'lxml')
 
 def get_pre(url):
     Soup = get_html_text(url)

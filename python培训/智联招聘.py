@@ -14,10 +14,7 @@ class ZLZP(object):
         # 工作地点，每两个工作地点之间有一个%2B进行拼接多个工作地点，但是最后一个地点没有%2B
         # %2B在URL中表示+号的意思
         for city in citys:
-            if city == citys[-1]:   # 如果是最后一个城市
-                args += city
-            else :                  # 如果不是最后一个城市
-                args += city + '%2B'
+            args += city if city == citys[-1] else f'{city}%2B'
         # kw=python&jl=北京&2B上海
         self.url += args
         # 记录工作地点

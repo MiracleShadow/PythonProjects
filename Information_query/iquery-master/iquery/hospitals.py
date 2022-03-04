@@ -30,11 +30,7 @@ class HospitalCollection(object):
         self._params = params
         self._city = self._params[0]
 
-        if len(self._params) == 2:
-            #: User input a hospital name after city
-            self._hospital = self._params[1]
-        else:
-            self._hospital = ''
+        self._hospital = self._params[1] if len(self._params) == 2 else ''
 
     @property
     def putian_hospitals_in_city(self):

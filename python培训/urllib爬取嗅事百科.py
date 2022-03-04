@@ -46,9 +46,8 @@ class Tools(object):
         content = re.sub(self.replace_n, '', result[2])
         content = re.sub(self.replace_br, '\n', content)
         content = re.sub(self.replace_element, '', content)
-        result_data = (name, result[1], content, result[3], result[4])
         # 返回经过处理的的元组
-        return result_data
+        return name, result[1], content, result[3], result[4]
 
 class QSBK(object):
     def __init__(self):

@@ -11,7 +11,7 @@ class hnnu():
         all_a = Soup.find('td', class_='content').find('table').find_all('a')
         all_class_columnStyle = Soup.find('td', class_='content').find_all('table', class_='columnStyle')
         sum = 0
-        arr = [0 for t in all_a]  # 列表的长度为<a>标签数
+        arr = [0 for _ in all_a]
         for class_columnStyle in all_class_columnStyle:
             for i in class_columnStyle.find_all(attrs={"target": "_blank"}):
                 arr[sum] = str(i.get_text())  # 将新闻的标题存入数组
@@ -66,8 +66,7 @@ class hnnu():
     def request(self, url):  ##这个函数获取网页的response 然后返回
         headers = {
             'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}
-        content = requests.get(url, headers=headers)
-        return content
+        return requests.get(url, headers=headers)
 
 hnnu = hnnu()  ##实例化
 hnnu.all_url('http://www.hnnu.edu.cn/s/21/t/148/p/11/i/1/list.htm')##给函数all_url传入参数  你可以当作启动爬虫（就是入口）

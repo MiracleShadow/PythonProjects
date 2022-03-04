@@ -127,7 +127,7 @@ class ShowTicketsQuery(object):
 
         if days < 1:
             exit_after_echo(QUERY_DAYS_INVALID)
-        start = datetime.today()
+        start = datetime.now()
         end = start + timedelta(days=days)
         return (
             datetime.strftime(start, '%Y-%m-%d'),
@@ -146,7 +146,7 @@ class ShowTicketsQuery(object):
     def parse(self, items):
         """Parse `主题`, `时间`, `场馆`, 票价` in every item."""
         rows = []
-        for i, item in enumerate(items):
+        for item in items:
             theme = colored.green(item.find(class_='ico').a.text.strip())
             text = item.find(class_='mt10').text.strip()
             mix = re.sub('\s+', ' ', text).split('：')

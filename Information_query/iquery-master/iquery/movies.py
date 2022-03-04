@@ -47,7 +47,7 @@ class MoviesCollection(object):
             else:
                 time = infos[-2:]
                 infos = '/'.join(infos[:-2])
-            m = [
+            yield [
                 idx + 1,
                 '\n'.join([
                     colored.green(row['title']),
@@ -56,7 +56,6 @@ class MoviesCollection(object):
                 infos,
                 score
             ]
-            yield m
 
     def _get_movie_summary(self, num):
         url = self._rows[num - 1].get('url')

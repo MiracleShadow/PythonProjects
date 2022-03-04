@@ -33,9 +33,7 @@ for i in range(18):  # 新闻页数 range() <7191 网页限制  目前共424页
                     soup = BeautifulSoup(r.text, 'html.parser')
                     title = soup.select('.readTitle')[0].text  # 新闻标题
                     time = soup.select('.readInfoList-top')[0].text.strip()
-                    text = ''  # 以下取得新闻内容
-                    for p in soup.select('p')[8:-4]:  # 切片法将非文章部分切除
-                        text += p.text
+                    text = ''.join(p.text for p in soup.select('p')[8:-4])
                     a = text  # 段落由一个个标签组成 取出
                     editor = result['editor'] = soup.select('.readInfoList-topAdd')[0].text.strip()  # 取得作者
                     print(title + "\n" + time + "\n" + a + "\n" + editor + "\n")
