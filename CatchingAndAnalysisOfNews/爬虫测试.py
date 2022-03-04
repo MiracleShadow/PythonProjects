@@ -5,15 +5,13 @@ import os
 
 def request(url):
     headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}
-    content = requests.get(url, headers=headers)
-    return content
+    return requests.get(url, headers=headers)
 
 def save(img_url,num):
     name = str(num)
     img = request(img_url)
-    f = open(name + '.jpg', 'ab')
-    f.write(img.content)
-    f.close()
+    with open(f'{name}.jpg', 'ab') as f:
+        f.write(img.content)
 
 tt = int(input("请输入你想查询的页数:"))
 

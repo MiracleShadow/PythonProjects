@@ -5,11 +5,10 @@ import pandas
 
 
 def getNewsDetail(newsurl):
-    result = {}
     r = requests.get(newsurl)
     r.encoding = r.apparent_encoding
     soup = BeautifulSoup(r.text, 'html.parser')
-    result['title'] = soup.select('title')[0].text.strip()  # 标题
+    result = {'title': soup.select('title')[0].text.strip()}
     result['dt'] = datetime.strptime(soup.select('.STYLE2')[0].contents[0].strip(), '发布时间：%Y-%m-%d\r\n 浏览次数：').strftime(
         '%Y-%m-%d')  # 一行时间
     '''

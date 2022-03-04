@@ -6,15 +6,13 @@ from prettytable import PrettyTable
 ##这个函数获取网页的response 然后返回
 def request(url):
     headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}
-    content = requests.get(url, headers=headers)
-    return content
+    return requests.get(url, headers=headers)
 
 #获取html
 def get_html_text(url):
     start_html = request(url)
     start_html.encoding = start_html.apparent_encoding
-    Soup = BeautifulSoup(start_html.text, 'lxml')
-    return Soup
+    return BeautifulSoup(start_html.text, 'lxml')
 
 #获取单界面每一条新闻的url
 def get_news_url(url):
@@ -25,8 +23,10 @@ def get_news_url(url):
     for i in res:
         pattern_news_url = re.compile(r'(?<=href=\").+?(?=\")|(?<=href=\').+?(?=\')')       #获取<td>标签里的href
         news_url = pattern_news_url.findall(i)
-        a="";a=a.join(news_url)
-        if(a!=""):list += ['http://www.hnnu.edu.cn' + a]
+        a=""
+        a=a.join(news_url)
+        if (a!=""):
+            list += [f'http://www.hnnu.edu.cn{a}']
     return list
 
 #获取单界面每一条新闻的时间
@@ -93,7 +93,7 @@ if __name__=='__main__':
 
     for inum in range(1,int(input("请输入你想查询的页数:"))+1):
 
-        url = 'http://www.hnnu.edu.cn/s/21/t/148/p/11/i/' + str(inum) + '/list.htm'
+        url = f'http://www.hnnu.edu.cn/s/21/t/148/p/11/i/{str(inum)}/list.htm'
         text_list = inews_p(url)
         title_list = inews_title(url)
         time_list = get_news_time(url)

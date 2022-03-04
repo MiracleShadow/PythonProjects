@@ -147,11 +147,7 @@ class Args(object):
 
     @property
     def as_train_query_params(self):
-        opts = self.options
-        if opts:
-            # apped valid options to end of list
-            return self._args[1:] + [opts]
-        return self._args
+        return self._args[1:] + [opts] if (opts := self.options) else self._args
 
     @property
     def as_show_query_params(self):

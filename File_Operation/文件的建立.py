@@ -28,7 +28,6 @@
 import os
 os.makedirs(os.path.join("D:\\News"))
 os.chdir(os.path.join("D:\\News"))  ##切换到目录
-file=open('data.txt','w')
-file.write('hello file world!\n')
-file.write('Bye file world.\n')
-file.close()
+with open('data.txt','w') as file:
+    file.write('hello file world!\n')
+    file.write('Bye file world.\n')

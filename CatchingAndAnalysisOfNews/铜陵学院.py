@@ -4,10 +4,9 @@ import pandas
 
 
 def getNewsDetail(newsurl):
-    result = {}
     r = requests.get(newsurl)
     soup = BeautifulSoup(r.text, 'html.parser')
-    result['title'] = soup.select('.arti-title')[0].text.strip()
+    result = {'title': soup.select('.arti-title')[0].text.strip()}
     result['newssource'] = newsurl
     result['time'] = soup.select('.arti-update')[0].text.strip()
     result['article'] = soup.select('.read')[0].text.strip()

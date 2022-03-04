@@ -42,8 +42,7 @@ class SongPage(object):
 
     @property
     def lyric(self):
-        raw = self._d('.lrc_main').html()
-        if raw:
+        if raw := self._d('.lrc_main').html():
             lyric = raw.strip().replace('<br/>', '') \
                                .replace('&#13;', '\n') \
                                .replace('\n\n', '\n')

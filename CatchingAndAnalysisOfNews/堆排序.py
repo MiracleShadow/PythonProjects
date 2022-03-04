@@ -44,7 +44,7 @@ def heap_sort(data_list):
     while i>0:
         print(data_list)
         data_list[0],data_list[i-1]=data_list[i-1],data_list[0]
-        i=i-1
+        i -= 1
         adjust_max_heap(data_list,i,0)
 
 a=[7,4,1,8,5,2,9,6,3]

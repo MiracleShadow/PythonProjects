@@ -66,7 +66,7 @@ class TrainsCollection(object):
             train_no = row.get('station_train_code')
             initial = train_no[0].lower()
             if not self._opts or initial in self._opts:
-                train = [
+                yield [
                     # Column: '车次'
                     train_no,
                     # Column: '车站'
@@ -98,7 +98,6 @@ class TrainsCollection(object):
                     # Column: '无座'
                     row.get('wz_num')
                 ]
-                yield train
 
     def pretty_print(self):
         """Use `PrettyTable` to perform formatted outprint."""
@@ -187,7 +186,7 @@ class TrainTicketsQuery(object):
             exit_after_echo(INVALID_DATE)
 
         # A valid query date should within 50 days.
-        offset = date - datetime.today()
+        offset = date - datetime.now()
         if offset.days not in range(-1, 50):
             exit_after_echo(INVALID_DATE)
 
@@ -207,12 +206,12 @@ class TrainTicketsQuery(object):
         l = len(result)
 
         # User only input month and day, eg 6-1, 6.26, 0626...
-        if l in (2, 3, 4):
-            year = str(datetime.today().year)
+        if l in {2, 3, 4}:
+            year = str(datetime.now().year)
             return year + result
 
         # User input full format date, eg 201661, 2016-6-26, 20160626...
-        if l in (6, 7, 8):
+        if l in {6, 7, 8}:
             return result
 
         return ''

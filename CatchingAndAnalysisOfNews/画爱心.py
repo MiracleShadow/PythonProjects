@@ -12,10 +12,10 @@ walkEnd = 1
 i = walkStart
 j = walkEnd
 while i <= 0 and j >= 0:
-    y1 = math.sqrt(1 - i * i) + (i * i) ** (1/3.0)
-    y2 = -math.sqrt(1 - i * i) + (i * i) ** (1/3.0)
-    y3 = math.sqrt(1 - j * j) + (j * j) ** (1/3.0)
-    y4 = -math.sqrt(1 - j * j) + (j * j) ** (1/3.0)
+    y1 = math.sqrt(1 - i**2) + (i**2)**(1/3.0)
+    y2 = -math.sqrt(1 - i**2) + (i**2)**(1/3.0)
+    y3 = math.sqrt(1 - j**2) + (j**2)**(1/3.0)
+    y4 = -math.sqrt(1 - j**2) + (j**2)**(1/3.0)
     alex.setx(i)
     alex.sety(y1)
     alex.dot()

@@ -25,7 +25,7 @@ class mzitu():
         html = self.request(href)
         max_span = BeautifulSoup(html.text, 'lxml').find('div', class_='pagenavi').find_all('span')[-2].get_text()
         for page in range(1, int(max_span) + 1):
-            page_url = href + '/' + str(page)
+            page_url = f'{href}/{str(page)}'
             self.img(page_url) ##调用img函数
 
     def img(self, page_url): ##这个函数处理图片页面地址获得图片的实际地址
@@ -36,9 +36,8 @@ class mzitu():
     def save(self, img_url): ##这个函数保存图片
         name = img_url[-9:-4]
         img = self.request(img_url)
-        f = open(name + '.jpg', 'ab')
-        f.write(img.content)
-        f.close()
+        with open(f'{name}.jpg', 'ab') as f:
+            f.write(img.content)
 
     def mkdir(self, path): ##这个函数创建文件夹
         path = path.strip()
@@ -54,8 +53,7 @@ class mzitu():
 
     def request(self, url): ##这个函数获取网页的response 然后返回
         headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}
-        content = requests.get(url, headers=headers)
-        return content
+        return requests.get(url, headers=headers)
 
 Mzitu = mzitu() ##实例化
 Mzitu.all_url('http://www.mzitu.com/all') ##给函数all_url传入参数  你可以当作启动爬虫（就是入口）

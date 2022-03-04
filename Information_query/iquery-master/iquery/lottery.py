@@ -53,8 +53,7 @@ class LotteryPage(object):
                 kjhm = ' '.join([hm_r, hm_g])
                 jcgc = i('td:eq(4)').text().strip()
 
-                lottery = [idx, cz, qh, kjsj, kjhm, jcgc]
-                yield lottery
+                yield [idx, cz, qh, kjsj, kjhm, jcgc]
 
     def _get_lottery_detail_by_id(self, id):
         """
